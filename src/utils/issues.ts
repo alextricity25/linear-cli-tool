@@ -1,7 +1,7 @@
-import { LinearClient } from '@linear/sdk';
 import chalk from 'chalk';
 import ora from 'ora';
 import { getLinearClient } from './linear.js';
+import { IssueFilter } from '@linear/sdk/dist/_generated_documents.js';
 
 type ListIssuesOptions = {
   team?: string;
@@ -18,8 +18,7 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
     const limit = options.limit ? parseInt(options.limit, 10) : 10;
     
     // Build the query filter
-    const filter: Record<string, any> = {};
-    
+    const filter: IssueFilter = {};
     if (options.team) {
       filter.team = { key: { eq: options.team.toUpperCase() } };
     }
@@ -33,8 +32,8 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
     }
     
     // Fetch issues
-    const issues = await client.issues(filter);
-    const issuesList = await issues.nodes;
+    const issues = await client.issues({filter});
+    const issuesList = issues.nodes;
     
     spinner.stop();
     
@@ -45,9 +44,8 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
     
     // Display issues
     issuesList.slice(0, limit).forEach((issue) => {
-      const stateColor = issue.state?.color || 'gray';
       console.log(
-        `${chalk.bold(issue.identifier)} ${issue.title} ${chalk.keyword(stateColor)(issue.state?.name || 'Unknown')}`
+        `${chalk.bold(issue.identifier)} ${issue.title} || 'Unknown')}`
       );
       console.log(`  ${chalk.dim(issue.url)}\n`);
     });

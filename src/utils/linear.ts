@@ -5,7 +5,7 @@ import os from 'os';
 import Conf from 'conf';
 
 const config = new Conf({
-  projectName: 'linear-cli'
+  projectName: 'linear-cli-tool'
 });
 
 export async function getLinearClient(): Promise<LinearClient> {

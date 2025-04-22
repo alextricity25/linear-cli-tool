@@ -2,6 +2,8 @@
 
 A command-line interface for interacting with [Linear](https://linear.app) using their TypeScript SDK.
 
+Work in progress
+
 ## Features
 
 - List, create, and modify Linear issues
@@ -14,14 +16,15 @@ A command-line interface for interacting with [Linear](https://linear.app) using
 ### Using Homebrew (macOS)
 
 ```bash
-brew tap YOUR_USERNAME/linear-cli
-brew install linear-cli
+brew tap YOUR_USERNAME/linear-cli-tool
+brew install linear-cli-tool
 ```
 
-### Using npm
+
+### Using yarn
 
 ```bash
-npm install -g linear-cli
+yarn global add linear-cli-tool
 ```
 
 ## Setup
@@ -67,21 +70,55 @@ linear config clear-api-key
 git clone https://github.com/YOUR_USERNAME/linear-cli-tool.git
 cd linear-cli-tool
 
+# Enable corepack (if not already enabled)
+corepack enable
+
 # Install dependencies
-npm install
+yarn install
 
 # Build the project
-npm run build
+yarn build
 
 # Watch for changes during development
-npm run dev
+yarn dev
 
 # Run linting
-npm run lint
+yarn lint
 
 # Run tests
-npm run test
+yarn test
 ```
+
+## Contributing
+
+### Prerequisites
+
+- Node.js 18 or later
+- Yarn (via corepack, which is included with Node.js)
+
+### Setup Development Environment
+
+1. Enable corepack:
+   ```bash
+   corepack enable
+   ```
+
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+
+3. Create a `.env` file with your Linear API key for testing (optional):
+   ```
+   LINEAR_API_KEY=your_api_key_here
+   ```
+
+4. Build and run the CLI locally:
+   ```bash
+   yarn build
+   # Run the local build
+   node dist/index.js
+   ```
 
 ## License
 
