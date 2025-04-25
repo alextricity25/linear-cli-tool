@@ -43,9 +43,9 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
     }
     
     // Display issues
-    issuesList.slice(0, limit).forEach((issue) => {
+    issuesList.slice(0, limit).forEach(async (issue) => {
       console.log(
-        `${chalk.bold(issue.identifier)} ${issue.title} || 'Unknown')}`
+        `${chalk.bold(issue.identifier)} ${issue.title} ${await issue.assignee?.then((a) => a.name|| '')}`,
       );
       console.log(`  ${chalk.dim(issue.url)}\n`);
     });
