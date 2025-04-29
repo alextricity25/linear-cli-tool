@@ -16,8 +16,7 @@ Work in progress
 ### Using Homebrew (macOS)
 
 ```bash
-brew tap YOUR_USERNAME/linear-cli-tool
-brew install linear-cli-tool
+brew install --build-from-source https://raw.githubusercontent.com/alextricity25/linear-cli-tool/main/Formula/linear-cli.rb
 ```
 
 
@@ -48,6 +47,15 @@ linear issues list
 
 # List issues with filters
 linear issues list --team TEAM --status "In Progress" --assignee "John Doe" --limit 20
+
+# Get issues in JSON format
+linear issues list --format json
+
+# List completed issues from a specific team
+linear issues list --team "Engineering" --status "Done" --limit 15
+
+# List your assigned issues
+linear issues list --assignee "me" --status "Todo"
 ```
 
 ### Configuration
@@ -61,13 +69,42 @@ linear config get-api-key
 
 # Clear API key
 linear config clear-api-key
+
+# Get configuration in JSON format
+linear config get-api-key --format json
+```
+
+### Output Formatting
+
+The CLI supports different output formats:
+
+```bash
+# Default text output
+linear issues list
+
+# JSON output for programmatic use
+linear issues list --format json
+linear config get-api-key --format json
+```
+
+### Practical Examples
+
+```bash
+# Quick workflow: List your in-progress issues
+linear issues list --assignee "me" --status "In Progress"
+
+# Export team's completed issues from last sprint to JSON
+linear issues list --team "Product" --status "Done" --format json > completed_issues.json
+
+# Check if your API key is configured
+linear config get-api-key
 ```
 
 ## Development
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/linear-cli-tool.git
+git clone https://github.com/alextricity25/linear-cli-tool.git
 cd linear-cli-tool
 
 # Enable corepack (if not already enabled)
