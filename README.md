@@ -13,15 +13,6 @@ Work in progress
 
 ## Installation
 
-### Using corepack and yarn
-
-```bash
-# Enable corepack if not already enabled
-corepack enable
-
-# Install the package
-yarn dlx linear-cli-tool
-```
 
 ### Local Installation
 
