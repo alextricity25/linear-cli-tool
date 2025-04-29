@@ -13,26 +13,34 @@ Work in progress
 
 ## Installation
 
-### Using Homebrew (macOS)
+### Using corepack and yarn
 
 ```bash
-# Add the tap from our repository's branch
-brew tap alextricity25/linear-cli-tool https://github.com/alextricity25/linear-cli-tool --force-auto-update
-# Install the tool
-brew install linear-cli
-```
-
-Note: This requires corepack to be enabled on your system. If you encounter any issues with Yarn version, run:
-```bash
-npm install -g corepack
+# Enable corepack if not already enabled
 corepack enable
+
+# Install the package
+yarn dlx linear-cli-tool
 ```
 
-
-### Using yarn
+### Local Installation
 
 ```bash
-yarn global add linear-cli-tool
+# Clone the repository
+git clone https://github.com/alextricity25/linear-cli-tool.git
+cd linear-cli-tool
+
+# Enable corepack
+corepack enable
+
+# Install dependencies
+yarn install
+
+# Build the package
+yarn build
+
+# Link the package for local development
+yarn link
 ```
 
 ## Setup
