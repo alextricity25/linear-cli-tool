@@ -1,7 +1,4 @@
 import { LinearClient } from '@linear/sdk';
-import fs from 'fs';
-import path from 'path';
-import os from 'os';
 import Conf from 'conf';
 
 const config = new Conf({
@@ -9,7 +6,7 @@ const config = new Conf({
 });
 
 export async function getLinearClient(): Promise<LinearClient> {
-  let apiKey = config.get('apiKey') as string;
+  const apiKey = config.get('apiKey') as string;
   
   if (!apiKey) {
     throw new Error(

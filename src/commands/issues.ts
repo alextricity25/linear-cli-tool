@@ -6,13 +6,18 @@ export function registerIssueCommands(program: Command): void {
 
   issueCommand
     .command('list')
+    .configureHelp({
+      showGlobalOptions: true,
+    })
     .description('List issues from Linear')
     .option('-t, --team <team>', 'Filter by team key')
     .option('-s, --status <status>', 'Filter by status')
     .option('-a, --assignee <assignee>', 'Filter by assignee')
     .option('-l, --limit <limit>', 'Limit the number of issues', '10')
     .action(async (options) => {
-      await listIssues(options);
+      // Get global format option if available
+      const format = program.opts().format;
+      await listIssues({ ...options, format });
     });
 
   // Add more issue-related commands here

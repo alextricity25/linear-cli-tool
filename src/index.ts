@@ -16,7 +16,8 @@ const { version } = packageJson;
 program
   .name('linear')
   .description('CLI tool for interacting with Linear')
-  .version(version);
+  .version(version)
+  .option('--format <format>', 'Output format: text or json', 'text');
 
 registerCommands(program);
 
