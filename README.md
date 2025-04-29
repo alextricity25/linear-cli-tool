@@ -16,7 +16,16 @@ Work in progress
 ### Using Homebrew (macOS)
 
 ```bash
-brew install --build-from-source https://raw.githubusercontent.com/alextricity25/linear-cli-tool/main/Formula/linear-cli.rb
+# Add the tap from our repository's branch
+brew tap alextricity25/linear-cli-tool https://github.com/alextricity25/linear-cli-tool --force-auto-update
+# Install the tool
+brew install linear-cli
+```
+
+Note: This requires corepack to be enabled on your system. If you encounter any issues with Yarn version, run:
+```bash
+npm install -g corepack
+corepack enable
 ```
 
 
