@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { listIssues } from '../utils/issues.js';
+import { commentOnIssue, listIssues } from '../utils/issues.js';
 
 export function registerIssueCommands(program: Command): void {
   const issueCommand = program.command('issues');
@@ -21,4 +21,16 @@ export function registerIssueCommands(program: Command): void {
     });
 
   // Add more issue-related commands here
+  issueCommand
+    .command('comment')
+    .configureHelp({
+      showGlobalOptions: true,
+    })
+    .description('Add a comment to an issue')
+    .option('-i, --issue <issue>', 'Issue identifier')
+    .option('-c, --comment <comment>', 'Comment text')
+    .action(async (options) => {
+      const format = program.opts().format;
+      await commentOnIssue(options.issue, options.comment, format);
+    });
 }

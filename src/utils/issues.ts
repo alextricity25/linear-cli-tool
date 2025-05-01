@@ -52,12 +52,12 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
 
     // Process and display issues
     const limitedIssues = issuesList.slice(0, limit);
-    
+
     // Map all issues to get complete data including assignees
     const processedIssues = await Promise.all(limitedIssues.map(async (issue) => {
       const assignee = await issue.assignee?.then(a => a?.name || null) || null;
       const status = await issue.state?.then(s => s?.name || null) || null;
-      
+
       return {
         identifier: issue.identifier,
         title: issue.title,
@@ -86,19 +86,52 @@ export async function listIssues(options: ListIssuesOptions): Promise<void> {
           );
           console.log(`  ${chalk.dim(issue.url)}\n`);
         });
-        
+
         console.log(chalk.dim(`Showing ${data.showing} of ${data.total} issues`));
       }
     );
   } catch (error) {
     spinner.fail('Failed to fetch issues');
-    
+
     if (options.format === 'json') {
-      console.log(JSON.stringify({ 
-        success: false, 
-        message: `Error: ${error instanceof Error ? error.message : String(error)}` 
+      console.log(JSON.stringify({
+        success: false,
+        message: `Error: ${error instanceof Error ? error.message : String(error)}`
       }, null, 2));
     } else {
+      console.error(chalk.red(`Error: ${error instanceof Error ? error.message : String(error)}`));
+    }
+  }
+}
+
+export async function commentOnIssue(issueId: string, comment: string, format: FormatOption = 'text'): Promise<void> {
+  const spinner = ora(`Commenting on issue ${issueId}...`).start();
+
+  try {
+    const client = await getLinearClient();
+
+    await client.createComment({
+      issueId,
+      body: comment,
+    });
+
+    spinner.succeed('Comment added successfully');
+
+    if (format === 'json') {
+      console.log(JSON.stringify({ success: true, message: 'Comment added successfully' }, null, 2));
+    } else {
+      console.log(chalk.green('Comment added successfully'));
+    }
+  } catch (error) {
+    spinner.fail('Failed to add comment');
+
+    if (format === 'json') {
+      console.log(JSON.stringify({
+        success: false,
+        message: `Error: ${error instanceof Error ? error.message : String(error)}`
+      }, null, 2));
+    } else {
+      console.log(error);
       console.error(chalk.red(`Error: ${error instanceof Error ? error.message : String(error)}`));
     }
   }
