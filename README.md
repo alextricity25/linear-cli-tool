@@ -165,6 +165,68 @@ yarn test
    node dist/index.js
    ```
 
+## Upcoming Features
+
+### 🚀 Phase 1: Enhanced Issue Management
+- [ ] **Create Issues**: Create new issues with title, description, labels, and assignee
+- [ ] **Update Issues**: Edit existing issues (title, description, status, assignee)
+- [ ] **Bulk Operations**: Mass update multiple issues at once
+- [ ] **Advanced Filtering**: Filter by labels, priority, created date, due date
+- [ ] **Issue Templates**: Create issues from predefined templates
+- [ ] **Search Issues**: Full-text search across issue titles and descriptions
+- [ ] **Issue Dependencies**: Manage issue relationships and dependencies
+
+### 📊 Phase 2: Team & Project Management
+- [ ] **Team Management**: List teams, add/remove team members
+- [ ] **Project Operations**: Create, update, and archive projects
+- [ ] **Cycle Management**: Create and manage development cycles/sprints
+- [ ] **Milestone Tracking**: Create and track project milestones
+- [ ] **Backlog Management**: Prioritize and organize backlog items
+- [ ] **Workspace Overview**: Get organization-level insights and statistics
+
+### 📈 Phase 3: Reporting & Analytics
+- [ ] **Team Velocity**: Generate team velocity reports and charts
+- [ ] **Burndown Charts**: Create sprint/cycle burndown visualizations
+- [ ] **Completion Reports**: Track issue completion rates over time
+- [ ] **Time Tracking**: Log time against issues and generate time reports
+- [ ] **Custom Reports**: Generate custom reports with filters and grouping
+- [ ] **Export Options**: Export reports to CSV, PDF, or other formats
+
+### 🔧 Phase 4: Workflow Automation
+- [ ] **Workflow States**: Create and manage custom workflow states
+- [ ] **Automation Rules**: Set up rules for automatic issue state transitions
+- [ ] **Label Management**: Create, update, and organize labels
+- [ ] **Notification Setup**: Configure custom notifications and alerts
+- [ ] **Integration Management**: Set up and manage GitHub/GitLab integrations
+- [ ] **Webhook Configuration**: Create and manage webhook endpoints
+
+### 🎯 Phase 5: Advanced Features
+- [ ] **Custom Views**: Create and share filtered views of issues
+- [ ] **Keyboard Shortcuts**: Interactive mode with keyboard shortcuts
+- [ ] **Batch Import**: Import issues from CSV or other project management tools
+- [ ] **API Key Management**: Manage and rotate multiple API keys
+- [ ] **Plugin System**: Extensible plugin architecture for custom commands
+- [ ] **Real-time Updates**: Live updates for issue changes and notifications
+
+### 🔗 Developer Workflow Integration
+- [ ] **Git Integration**: Create issues from commit messages or branch names
+- [ ] **PR Linking**: Automatically link pull requests to Linear issues
+- [ ] **Branch Creation**: Create Git branches from Linear issues
+- [ ] **Status Sync**: Update issue status based on Git workflow events
+- [ ] **Code Review Integration**: Create issues from code review comments
+
+### 💡 Quality of Life Improvements
+- [ ] **Interactive Mode**: REPL-style interactive command mode
+- [ ] **Configuration Profiles**: Support multiple Linear workspaces/profiles
+- [ ] **Fuzzy Search**: Smart search with typo tolerance
+- [ ] **Auto-completion**: Shell completion for commands and options
+- [ ] **Offline Mode**: Cache frequently used data for offline access
+- [ ] **Progress Indicators**: Better progress bars and status updates
+
+---
+
+**Want to contribute?** Pick any unchecked feature above and submit a pull request! See the [Contributing](#contributing) section for development setup instructions.
+
 ## License
 
 MIT
